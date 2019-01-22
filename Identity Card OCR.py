@@ -8,11 +8,11 @@ import cv2
 import numpy as np
 import mysql.connector
 
-pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
+pytesseract.tesseract_cmd = '<YOUR_tesseract.exe_PATH>'
 
-src_path = "D:/BINUS/TUGAS/SEMESTER 3/Artificial Intelligence/Tambahan Nilai UAS/images/"
+src_path = "<PATH>"
 
-img_path = src_path + "deby.png"
+img_path = src_path + "YOUR_IMAGE_FILE_NAME.png"
 
 
 def get_string(img_path):
@@ -33,11 +33,11 @@ def get_string(img_path):
 
     
     # Write the image after apply opencv to do some ...
-    cv2.imwrite(src_path + "result.png", img)    
+    cv2.imwrite(src_path + "thres.png", img)    
     
 
     # Recognize text with tesseract for python
-    result = pytesseract.image_to_string(Image.open(src_path + "result.png"))    
+    result = pytesseract.image_to_string(Image.open(src_path + "thres.png"))    
         
     return result
 

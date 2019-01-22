@@ -16,13 +16,13 @@ img_path = src_path + "YOUR_IMAGE_FILE_NAME.png"
 
 
 def get_string(img_path):
-    # Read image with opencv
+    # Read image
     img = cv2.imread(img_path)
 
     # Convert to gray
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # Apply dilation and erosion to remove some noise
+    # Dilation and erosion to remove some noise
     kernel = np.ones((1, 1), np.uint8)
 
     img = cv2.dilate(img, kernel, iterations=1)
@@ -32,11 +32,11 @@ def get_string(img_path):
     ret2,img = cv2.threshold(img,80,100,cv2.THRESH_BINARY)
 
     
-    # Write the image after apply opencv to do some ...
+    # Save Image
     cv2.imwrite(src_path + "thres.png", img)    
     
 
-    # Recognize text with tesseract for python
+    # Getting text from image
     result = pytesseract.image_to_string(Image.open(src_path + "thres.png"))    
         
     return result
